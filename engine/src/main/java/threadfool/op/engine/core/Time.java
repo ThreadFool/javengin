@@ -8,7 +8,7 @@ public class Time
 		lastTIme = now();
 	}
 
-	private static void update(){
+	public static void update(){
 		double current = now();
 		delta = (float)(current - lastTIme);
 		lastTIme = current;

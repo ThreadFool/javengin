@@ -36,4 +36,9 @@ public class Shader
 	public void bind() {
 		glUseProgram(programId);
 	}
+
+	public void setVec2(String name, float x, float y) {
+		int loc = glGetUniformLocation(programId, name);
+		glUniform2f(loc, x, y);
+	}
 }

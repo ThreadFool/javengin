@@ -32,5 +32,9 @@ public class Window
 		GLFW.glfwPollEvents();
 	}
 
+	public long getHandle()
+	{
+		return handle;
+	}
 }
 
