@@ -8,7 +8,8 @@ import org.lwjgl.glfw.GLFW;
 
 import threadfool.op.engine.platform.input.InputSystem;
 import threadfool.op.engine.platform.window.Window;
-import threadfool.op.engine.render.Renderer;
+import threadfool.op.engine.render.shapes.SquareRenderer;
+import threadfool.op.engine.render.shapes.TriangleRenderer;
 
 public class GameLoop
 {
@@ -17,12 +18,13 @@ public class GameLoop
 	float speed = 1.5f;
 
 	private final Window window;
-	private final Renderer renderer;
-
+	private final TriangleRenderer triangleRenderer;
+	private final SquareRenderer squareRenderer;
 
 	public GameLoop(Window window){
 		this.window = window;
-		this.renderer = new Renderer();
+		this.triangleRenderer = new TriangleRenderer();
+		this.squareRenderer = new SquareRenderer();
 	}
 
 	public void run(){
@@ -38,8 +40,8 @@ public class GameLoop
 			if(input.isKeyDown(GLFW.GLFW_KEY_W)) y += speed * Time.delta();
 			if(input.isKeyDown(GLFW.GLFW_KEY_S)) y -= speed * Time.delta();
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			renderer.renderTriangle(x,y);
-
+			triangleRenderer.renderTriangle(x+0.5f,y+0.4f);
+			squareRenderer.renderSquare(x,y);
 			window.update();
 		}
 	}

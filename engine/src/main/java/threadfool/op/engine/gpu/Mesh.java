@@ -10,11 +10,13 @@ public class Mesh
 {
 	private final int vao;
 	private final int vbo;
+	private int vertexCount;
 
 	public Mesh(float[] verticles)
 	{
 		vao = glGenVertexArrays();
 		vbo = glGenBuffers();
+		vertexCount = verticles.length / 3;
 
 		glBindVertexArray(vao);
 
@@ -33,7 +35,7 @@ public class Mesh
 
 	public void draw(){
 		glBindVertexArray(vao);
-		glDrawArrays(GL_TRIANGLES,0 ,3);
+		glDrawArrays(GL_TRIANGLES,0 ,vertexCount);
 		glBindVertexArray(0);
 	}
 }
