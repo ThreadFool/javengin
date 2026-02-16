@@ -16,14 +16,15 @@ import threadfool.op.engine.render.Renderer;
 import threadfool.op.engine.render.shapes.SquareRenderer;
 import threadfool.op.engine.render.shapes.TriangleRenderer;
 import threadfool.op.engine.scene.GameObject;
+import threadfool.op.engine.scene.PlayerController;
 import threadfool.op.engine.scene.Scene;
 import threadfool.op.engine.scene.Transform;
 
 public class GameLoop
 {
-	float x = 0f;
-	float y = 0f;
-	float speed = 1.5f;
+	float x = 200f;
+	float y = 200f;
+	float speed = 100.5f;
 	private final Window window;
 	private final TriangleRenderer triangleRenderer;
 	private final SquareRenderer squareRenderer;
@@ -38,36 +39,28 @@ public class GameLoop
 	{
 		Time.init();
 
-		Transform t1 = new Transform();
 		Scene scene = new Scene();
 		Camera cam = new Camera();
-		t1.position.set(100,100);
 
-
-		GameObject gameObject = new GameObject(squareRenderer);
-		gameObject.transform.position.set(300f, 300f);
-		scene.add(gameObject);
-		gameObject.transform.scale.set(100, 100);
-
+		GameObject player = new GameObject(squareRenderer);
+		player.addComponent(new PlayerController());
+		scene.add(player);
+		player.transform.scale = new Vector2f(100f, 100f);
+		player.transform.position = new Vector2f(300f,400f);
 		InputSystem input = new InputSystem(window);
+		GameObject gameObject = new GameObject(triangleRenderer);
+		gameObject.transform.position.set(100f, 100f);
+		gameObject.transform.scale.set(50f,50f);
+
+		scene.add(gameObject);
 
 		while(!window.shouldClose()){
 			Time.update();
-
-			Random random = new Random();
-			float rf = random.nextFloat();
-			if(input.isKeyDown(GLFW.GLFW_KEY_A)) x -= speed * Time.delta();
-			if(input.isKeyDown(GLFW.GLFW_KEY_D)) x += speed * Time.delta();
-			if(input.isKeyDown(GLFW.GLFW_KEY_W)) y += speed * Time.delta();
-			if(input.isKeyDown(GLFW.GLFW_KEY_S)) y -= speed * Time.delta();
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			gameObject.transform.position=new Vector2f(300+rf,300f+rf);
-			scene.update();
+			cam.followCentered(player, 800, 600);
+			scene.update(input);
 			scene.render(cam, window);
-
-			//squareRenderer.render(t1, cam, window);
-
 			window.update();
 		}
 	}

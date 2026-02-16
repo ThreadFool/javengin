@@ -3,6 +3,7 @@ package threadfool.op.engine.scene;
 import java.util.ArrayList;
 import java.util.List;
 
+import threadfool.op.engine.platform.input.InputSystem;
 import threadfool.op.engine.platform.window.Window;
 import threadfool.op.engine.render.Camera;
 
@@ -14,9 +15,9 @@ public class Scene
 		objects.add(obj);
 	}
 
-	public void update() {
+	public void update(InputSystem inputSystem) {
 		for (GameObject obj : objects) {
-			obj.update();
+			obj.update(inputSystem);
 		}
 	}
 

@@ -7,7 +7,7 @@ public class Transform
 {
 	public  Vector2f position = new Vector2f(0, 0);
 	public float rotation = 0f; // radians
-	public final Vector2f scale = new Vector2f(1, 1);
+	public Vector2f scale = new Vector2f(1, 1);
 
 	private final Matrix4f modelMatrix = new Matrix4f();
 
