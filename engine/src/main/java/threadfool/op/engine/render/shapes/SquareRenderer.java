@@ -1,5 +1,8 @@
 package threadfool.op.engine.render.shapes;
 
+import static threadfool.op.engine.util.ShaderUtlis.FRAGMENT;
+import static threadfool.op.engine.util.ShaderUtlis.VERTEX;
+
 import org.joml.Matrix4f;
 
 import threadfool.op.engine.gpu.Mesh;

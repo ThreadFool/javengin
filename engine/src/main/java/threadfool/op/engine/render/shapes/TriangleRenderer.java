@@ -1,5 +1,8 @@
 package threadfool.op.engine.render.shapes;
 
+import static threadfool.op.engine.util.ShaderUtlis.FRAGMENT;
+import static threadfool.op.engine.util.ShaderUtlis.VERTEX;
+
 import threadfool.op.engine.gpu.Mesh;
 import threadfool.op.engine.gpu.Shader;
 import threadfool.op.engine.render.Renderer;
