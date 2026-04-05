@@ -3,7 +3,7 @@ package threadfool.op.engine.render;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 
-import threadfool.op.engine.scene.NewGameObject;
+import threadfool.op.engine.scene.GameObject;
 import threadfool.op.engine.scene.Transform;
 
 public class Camera
@@ -21,7 +21,7 @@ public class Camera
 		return new Matrix4f().ortho2D(0, width, 0, height);
 	}
 
-	public void followCentered(NewGameObject target, float screenWidth, float screenHeight) {
+	public void followCentered(GameObject target, float screenWidth, float screenHeight) {
 		Transform t = target.getComponent(Transform.class);
 		if (t != null) {
 			position.set(t.position.x + t.scale.x / 2f - screenWidth / 2f,

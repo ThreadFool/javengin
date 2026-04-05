@@ -5,9 +5,13 @@ import org.lwjgl.glfw.GLFW;
 public class Window
 {
 	private long handle;
+	private int width;
+	private int height;
 
 	public void create(final int w, final int h, final String title)
 	{
+		this.width = w;
+		this.height = h;
 		if(!GLFW.glfwInit()) throw new IllegalStateException("GLFW init failed");
 
 		GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -36,5 +40,8 @@ public class Window
 	{
 		return handle;
 	}
+
+	public int getWidth()  { return width; }
+	public int getHeight() { return height; }
 }
 

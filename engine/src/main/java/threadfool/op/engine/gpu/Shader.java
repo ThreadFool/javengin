@@ -53,4 +53,12 @@ public class Shader
 		mat.get(fb);
 		glUniformMatrix4fv(loc, false, fb);
 	}
+
+	public void setInt(String name, int value) {
+		glUniform1i(glGetUniformLocation(programId, name), value);
+	}
+
+	public void setVec4(String name, float r, float g, float b, float a) {
+		glUniform4f(glGetUniformLocation(programId, name), r, g, b, a);
+	}
 }
