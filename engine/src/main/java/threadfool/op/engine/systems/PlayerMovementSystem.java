@@ -4,14 +4,14 @@ import org.lwjgl.glfw.GLFW;
 
 import threadfool.op.engine.core.Time;
 import threadfool.op.engine.platform.input.InputSystem;
-import threadfool.op.engine.scene.NewGameObject;
-import threadfool.op.engine.scene.NewScene;
+import threadfool.op.engine.scene.GameObject;
+import threadfool.op.engine.scene.Scene;
 import threadfool.op.engine.scene.Transform;
 
 public class PlayerMovementSystem {
 
-	public void update(NewScene scene, InputSystem input) {
-		for (NewGameObject obj : scene.getObjectsWith(PlayerInput.class)) {
+	public void update(Scene scene, InputSystem input) {
+		for (GameObject obj : scene.getObjectsWith(PlayerInput.class)) {
 			Transform t = obj.getComponent(Transform.class);
 			PlayerInput p = obj.getComponent(PlayerInput.class);
 
